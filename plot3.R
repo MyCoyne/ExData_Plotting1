@@ -28,8 +28,17 @@ myData <- data [l.rows, ]
 ## ##################################
 myData_xDate  <- paste(myData$Date, myData$Time) 
 myData_yObj   <- strptime(myData_xDate, "%d/%m/%Y %H:%M:%S") 
-plot  (myData_yObj, as.numeric (as.character(myData$Global_active_power))
+glblActivePower <- as.numeric (as.character(myData$Global_active_power))
+subMetering1  <- as.numeric (as.character(myData$Sub_metering_1))
+subMetering2  <- as.numeric (as.character(myData$Sub_metering_2))
+subMetering3  <- as.numeric (as.character(myData$Sub_metering_3))
+plot  (myData_yObj, subMetering1 
        , type='l'
        , xlab=NA
-       , ylab="Global Active Power (kilowatts)"
-)
+       , ylab="Energy sub metering")
+points(myData_yObj,subMetering2,type="l",col="red")
+points(myData_yObj,subMetering3,type="l",col="blue")
+legend("topright",
+       ,col=c("black","red","blue")
+       ,legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+

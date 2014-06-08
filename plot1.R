@@ -19,7 +19,7 @@ yObj  <- strptime(xDate, "%d/%m/%Y %H:%M:%S") ## class(yObj) is POSIXlt and POSI
 start_datetime <- "2007-02-01 00:00:00"
 end_datetime   <- "2007-02-02 23:59:59"
 ## Getting the rows of interest
-l.rows <- (yObj >= as.POSIXlt(start_datetime)) & (y <= as.POSIXlt(end_datetime))
+l.rows <- (yObj >= as.POSIXlt(start_datetime)) & (yObj <= as.POSIXlt(end_datetime))
 ## myData now contains all rows within two days of interest
 myData <- data [l.rows, ]
 ## Now ready for plotting
